@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Wish List Items</h1>
+{% for wish in wishs %}
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+            <td>{{ wish.description }}</td>
+            <td>Smith</td>
+        </tr>
+    </table>
+{% endfor %}
+<button>
+    <a href="">Add a Wish Item</a>
+</button>
+
+
+{% endblock %}
