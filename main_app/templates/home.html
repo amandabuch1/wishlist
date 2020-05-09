@@ -14,7 +14,12 @@
             {% for wish in wishs %}
             <tr>
                 <td>{{ wish.description }}</td>
-                <td><a href="{% url 'wish_delete' wish.id %}">X</a></td>
+                <td>
+                    <!-- <a href="{% url 'wish_delete' wish.id %}">X</a> -->
+                    <form method="POST" action="{% url 'wish_delete' wish.id %}">
+                        {% csrf_token %}<input type="submit" value="X">
+                     </form>
+                </td>
             </tr>
             {% endfor %}
         </tr>
