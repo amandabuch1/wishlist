@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Wish List Items</h1>
+<!-- AFTER CODE WITH THE if wish_list -->
+{% if wish_list|length == 0 %}
+    <h5>No Wish Items Exist</h5>
+{% else %}
+        <table>
+            <thead>
+                <tr>            
+                    <th>Description</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tr>
+                {% for wish in wishs %}
+                <tr>
+                    <td>{{ wish.description }}</td>
+                    <td><a href="{% url 'wish_delete' wish.id %}">X</a></td>
+                </tr>
+                {% endfor %}
+            </tr>
+        </table>
+{% endif %}
+
+<button>
+    <a href="{% url 'add' %}">Add a Wish Item</a>
+</button>
+
+
+{% endblock %}

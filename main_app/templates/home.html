@@ -2,27 +2,27 @@
 {% block content %}
 
 <h1>Wish List Items</h1>
-
-    <h5>No Wish Items Exist</h5>
-
-        <table>
-            <thead>
-                <tr>            
-                    <th>Description</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tr>
-                {% for wish in wishs %}
-                <tr>
-                    <td>{{ wish.description }}</td>
-                    <td><a href="{% url 'wish_delete' wish.id %}">X</a></td>
-                </tr>
-                {% endfor %}
+{% if wishs.count %}
+    <table>
+        <thead>
+            <tr>            
+                <th>Description</th>
+                <th>Delete</th>
             </tr>
-        </table>
-    
+        </thead>
+        <tr>
+            {% for wish in wishs %}
+            <tr>
+                <td>{{ wish.description }}</td>
+                <td><a href="{% url 'wish_delete' wish.id %}">X</a></td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </table>
+{% else %}
 
+<h5>No wish Items Exist</h5>
+{% endif %}
 <button>
     <a href="{% url 'add' %}">Add a Wish Item</a>
 </button>
